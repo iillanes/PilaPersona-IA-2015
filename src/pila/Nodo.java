@@ -5,14 +5,20 @@ import persona.Persona;
 /**
  * Created by jaime on 08-04-2015.
  */
-public class Nodo {
+public class Nodo<T> {
 
-    private Persona dato;
-    private Persona enlace;
+    public T dato;
+    public Nodo enlace;
 
-    //constructor
-    Nodo(Persona nueva) {
-        this.dato = nueva;
-        this.enlace = null;
+    public Nodo(T dato) {
+        this.dato = dato;
+        enlace = null;
     }
+
+
+    @Override
+    public String toString() {
+        return dato.toString();
+    }
+
 }
