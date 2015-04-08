@@ -8,11 +8,15 @@ import persona.Persona;
 public class Nodo<T> {
 
     public T dato;
-    public Nodo enlace;
+    private Nodo enlace;
 
     public Nodo(T dato) {
         this.dato = dato;
         enlace = null;
+    }
+
+    public void setEnlace(Nodo enlace) {
+        this.enlace = enlace;
     }
 
 
