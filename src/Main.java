@@ -23,13 +23,8 @@ public class Main {
 
 
         while(cont!=tope){
-            Persona nueva=crearPersona();
-            // la nueva persona ingresa a la pila
-            pila.apilar(nueva);
 
-           // nueva=creaPersona();
-            //pasar nueva a la pila de personas
-            //System.out.println(nueva.toString());
+            pila.apilar(crearPersona());
             cont++;
         }
 
@@ -41,6 +36,7 @@ public class Main {
 
 
     public static Persona crearPersona(){
+
         Scanner scaner = new Scanner(System.in); //creamos un scaner de tipo Scanner
 
         System.out.println("Ingrese valores Persona");
