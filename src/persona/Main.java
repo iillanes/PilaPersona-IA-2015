@@ -11,7 +11,8 @@ public class Main {
 
         Scanner scan = new Scanner(System.in);
 
-        System.out.println("cuantas personas desea crear");
+        System.out.println("Cuantas personas desea crear?");
+        System.out.print("Cantidad: ");
         int tope= Integer.parseInt(scan.nextLine());
         int cont=0;//contador para el limite de personas
 
