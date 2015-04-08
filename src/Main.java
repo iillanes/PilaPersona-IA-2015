@@ -54,7 +54,12 @@ public class Main {
         String apellidoMaterno = scaner.nextLine();
 
         System.out.println("Ingrese edad");
-        int edad =  Integer.parseInt(scaner.nextLine());
+        int edad = 0;
+        try {
+            edad = Integer.parseInt(scaner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("La edad ingresada no es válida");;
+        }
 
         //creamos nuevaPersona y le pasamos los datos capturados nombre, apellidoPaterno, apellidoMaterno
         Persona nuevaPersona = new Persona(nombre, apellidoPaterno, apellidoMaterno, edad);
