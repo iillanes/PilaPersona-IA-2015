@@ -1,4 +1,6 @@
-package persona;
+import persona.Persona;
+import pila.Pila;
+
 
 import java.util.Scanner;
 /**
@@ -16,13 +18,22 @@ public class Main {
         int tope= Integer.parseInt(scan.nextLine());
         int cont=0;//contador para el limite de personas
 
+        // crea la pila
+        Pila pila = new Pila();
+
+
         while(cont!=tope){
             Persona nueva=crearPersona();
+            // la nueva persona ingresa a la pila
+            pila.apilar(nueva);
+
            // nueva=creaPersona();
             //pasar nueva a la pila de personas
-            System.out.println(nueva.toString());
+            //System.out.println(nueva.toString());
             cont++;
         }
+
+        System.out.println(pila.verTop());
 
 
 
