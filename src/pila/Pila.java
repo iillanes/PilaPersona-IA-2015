@@ -1,14 +1,28 @@
 package pila;
 
+import persona.Persona;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.ListIterator;
+
 /**
  * Created by jaime on 08-04-2015.
  */
 public class Pila<T> {
     private Nodo<T> cima;
 
+    public int getTotalElementos() {
+        return totalElementos;
+    }
+
+    private int totalElementos = 0;
+
     public Pila() {
         cima = null;
     }
+
+
 
     public void apilar(T nuevo) {
 
@@ -17,10 +31,12 @@ public class Pila<T> {
 
         if (cima == null) {
             cima = nuevoElem;
+            totalElementos++;
         } else {
             aux = cima;
             cima = nuevoElem;
             cima.setEnlace(aux);
+            totalElementos++;
         }
     }
 
@@ -28,6 +44,7 @@ public class Pila<T> {
         if (cima != null) {
             Nodo aux = cima;
             cima = cima.getEnlace();
+            totalElementos--;
             return aux;
         } else {
             throw new ExcepcionPilaVacia();
@@ -68,19 +85,28 @@ public class Pila<T> {
 
     }
 
-    public String invertir() {
-        Pila pilaAuz = new Pila();
-        try {
-            while (!esVacia()) {
-                Nodo nodoTemp = this.desapilar();
-                pilaAuz.apilar(nodoTemp);
-            }
-            return pilaAuz.toString();
+    public Pila invertir() {
+        ArrayList<Persona> arrPer = new ArrayList<Persona>();
 
-        } catch (ExcepcionPilaVacia excepcionPilaVacia) {
-            return null;
+        while (this.esVacia() == false) {
+
+            try {
+                Nodo<Persona> nodoTemp = this.desapilar();
+                Persona personaTemp = nodoTemp.dato;
+                arrPer.add(personaTemp);
+            } catch (ExcepcionPilaVacia excepcionPilaVacia) {
+                excepcionPilaVacia.getMessage();
+            }
         }
 
+        ListIterator<Persona> listIterator = arrPer.listIterator();
+        Pila pilaInvertida = new Pila();
+
+        while (listIterator.hasNext()) {
+            Persona personaTemp = listIterator.next();
+            pilaInvertida.apilar(personaTemp);
+        }
+        return pilaInvertida;
 
     }
 }
