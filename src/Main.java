@@ -30,11 +30,11 @@ public class Main {
             cont++;
         }
 
-        System.out.println(pila.verTop());
-        System.out.println("La pila invertida es: " + "\n" + pila.invertir());
 
+        //System.out.println(pila.toString());
+        System.out.println("La pila invertida es: " + "\n"+  pila.invertir());
 
-
+        System.out.println("La pila original es: " + "\n"+  pila);
     }
 
 
