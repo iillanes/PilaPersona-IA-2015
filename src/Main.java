@@ -31,13 +31,8 @@ public class Main {
         }
 
         System.out.println(pila.verTop());
-        try {
-            Nodo aux;
-            aux=pila.desapilar();
-            System.out.println("se de sapilo"+aux.toString());
-        } catch (ExcepcionPilaVacia excepcionPilaVacia) {
-            excepcionPilaVacia.getMessage();
-        }
+        System.out.println("La pila invertida es: " + "\n" + pila.invertir());
+
 
 
     }
