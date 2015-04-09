@@ -1,4 +1,6 @@
 import persona.Persona;
+import pila.ExcepcionPilaVacia;
+import pila.Nodo;
 import pila.Pila;
 
 
@@ -29,7 +31,13 @@ public class Main {
         }
 
         System.out.println(pila.verTop());
-
+        try {
+            Nodo aux;
+            aux=pila.desapilar();
+            System.out.println("se de sapilo"+aux.toString());
+        } catch (ExcepcionPilaVacia excepcionPilaVacia) {
+            excepcionPilaVacia.getMessage();
+        }
 
 
     }

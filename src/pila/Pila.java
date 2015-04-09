@@ -51,6 +51,16 @@ public class Pila<T> {
         }
     }
 
+    public Nodo desapilar() throws ExcepcionPilaVacia {
+        if (cima != null) {
+            Nodo aux = cima;
+            cima.setEnlace(cima.getEnlace());
+            return aux;
+        } else {
+            throw new ExcepcionPilaVacia();
+        }
+    }
+
     public Nodo verTop() {
         return cima;
     }

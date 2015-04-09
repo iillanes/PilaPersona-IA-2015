@@ -19,11 +19,13 @@ public class Nodo<T> {
         this.enlace = enlace;
     }
 
+    public T getDato() {
+        return dato;
+    }
+
     public Nodo getEnlace() {
         return enlace;
     }
-
-
 
     @Override
     public String toString() {
