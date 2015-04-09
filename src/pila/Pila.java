@@ -60,6 +60,33 @@ public class Pila<T> {
     @Override
     public String toString() {
 
+        ArrayList<Persona> arrayListPersona = new ArrayList<Persona>();
+        StringBuilder stringBuilder = new StringBuilder();
+
+        while (this.esVacia() == false) {
+            try {
+                Nodo<Persona> nodoTemp = this.desapilar();
+                Persona personaTemp = nodoTemp.dato;
+                arrayListPersona.add(personaTemp);
+
+            } catch (ExcepcionPilaVacia excepcionPilaVacia) {
+                excepcionPilaVacia.getMessage();
+            }
+        }
+
+        ListIterator<Persona> listIterator = arrayListPersona.listIterator();
+
+        T personaTemp2;
+        while (listIterator.hasNext()) {
+            personaTemp2 = (T)listIterator.next();
+            stringBuilder.append(personaTemp2.toString());
+            this.apilar(personaTemp2);
+            stringBuilder.append("\n");
+        }
+        return stringBuilder.toString();
+        /*
+
+
         StringBuilder sb = new StringBuilder();
         Pila pilaTemp = this;
 
@@ -75,7 +102,7 @@ public class Pila<T> {
             excepcionPilaVacia.getMessage();
         }
 
-        return sb.toString();
+        return sb.toString();*/
     }
 
     public boolean esVacia() {
@@ -107,6 +134,16 @@ public class Pila<T> {
         while (listIterator.hasNext()) {
             Persona personaTemp = listIterator.next();
             pilaInvertida.apilar(personaTemp);
+        }
+
+        /**
+         * la pila original (this) fue completamente despilada, en esta etapa está vacia, entonces 
+         * hay que apilar otra vez con los elementos que están en el arraylist, los elementos del arraylist son recuperados de fin a inicio
+         */
+        T personaTemp2;
+        while (listIterator.hasPrevious()) {
+            personaTemp2 = (T)listIterator.previous();
+            this.apilar(personaTemp2);
         }
         return pilaInvertida;
 
